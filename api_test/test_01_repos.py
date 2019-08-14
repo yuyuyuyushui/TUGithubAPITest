@@ -3,6 +3,7 @@ import pytest
 
 def test_list_all_public_repos(env):
     r = env.github.repos.list_all_public_repos()
+    print(r.status_code)
     assert r.status_code == 200, "status_code should be 200 but actually={}".format(r)
     assert r.json()[0].get('id') == 1
     assert r.json()[0].get('name') == 'grit'
